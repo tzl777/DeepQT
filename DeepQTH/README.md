@@ -41,72 +41,18 @@
    pip install -r requirements.txt
    ```
 
-### Clone DeePTB and Navigate to the root directory:
+### Clone DeepQT and Navigate to the root directory:
     ```bash
-    git clone https://github.com/mzjb/DeepH-pack.git
-    cd DeepH-pack
+    git clone https://github.com/tzl777/DeepQT.git
+    cd DeepQT
     pip install .
    ```
-
-
-## Installation
-
-To use DeepH-pack, following environments and packages are required：
-
-### Python
-Prepare the Python 3.9 interpreter. Install the following Python packages required:
-- NumPy
-- SciPy
-- PyTorch = 1.9.1
-- PyTorch Geometric = 1.7.2
-- e3nn = 0.3.5
-- pymatgen
-- h5py
-- TensorBoard
-- pathos
-- psutil
-
-In Linux, you can quickly achieve the requirements by running
-
-```bash
-# install miniconda with python 3.9
-wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
-bash Miniconda3-py39_4.10.3-Linux-x86_64.sh
-
-# install packages by conda
-conda install numpy
-conda install scipy
-conda install pytorch==1.9.1 ${pytorch_config}
-conda install pytorch-geometric=1.7.2 -c rusty1s -c conda-forge
-conda install pymatgen -c conda-forge
-
-# install packages by pip
-pip install e3nn==0.3.5
-pip install h5py
-pip install tensorboard
-pip install pathos
-pip install psutil
 ```
-
-with `${pytorch_config}` replaced by your own configuration.
-You can find how to set it in [the official website of PyTorch](https://pytorch.org/get-started/previous-versions/).
-
-### One of the supported DFT packages
-One of the supported DFT packages is required to obtain the dataset and  for large-scale material systems.
-DeepH-pack supports DFT results made by SIESTA.
-
-**SIESTA**:
+### Install siesta
 Install [SIESTA package](https://gitlab.com/siesta-project/siesta) for NEGF-DFT Hamiltonian matrix calculation to construct datasets. DeepQTH requires SIESTA version >= 4.1.5.
 
-## Usage
 
-### Install DeepH-pack
-Run the following command in the path of DeepH-pack:
-```bash
-git clone https://github.com/mzjb/DeepH-pack.git
-cd DeepH-pack
-pip install .
-```
+## Usage
 
 ### Prepare the dataset
 To perform efficient *ab initio* electronic structure calculation by DeepH method 
