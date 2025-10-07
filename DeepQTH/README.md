@@ -138,7 +138,7 @@ deeph-inference --config ${config_path}
 ```
 with `${config_path}` replaced by the path of your configuration file.
 
-## Demo: DeepH study on twisted bilayer bismuthene
+# Demo: DeepH study on twisted bilayer bismuthene
 When the directory structure of the code folder is not modified, the scripts in it can be used to generate a dataset of non-twisted structures, train a DeepH model, make predictions on the DFT Hamiltonian matrix of twisted structure, and perform sparse diagonalization to compute the band structure for the example study of bismuthene.
 
 Firstly, generate example input files according to your environment path by running the following command:
@@ -173,82 +173,5 @@ example/work_dir/inference/5_4/openmx.Band
 ```
 The plotted band structure will be consistent with the right pannel of figure 6c in our paper.
 
+# How to cite
 
-## Demo: Reproduce the experimental results of the paper
-You can train DeepH models using the existing [dataset](https://zenodo.org/record/6555484) to reproduce the results of our paper.
-
-Firstly, download the processed dataset for graphene (*graphene_dataset.zip*), MoS<sub>2</sub> (*MoS2_dataset.zip*), twisted bilayer graphene (*TBG_dataset.zip*) or twisted bilayer bismuthene (*TBB_dataset.zip*). Uncompress the ZIP file.
-
-Secondly, edit corresponding config files in the `DeepH-pack/ini/`. *raw_dir* should be set to the path of the downloaded dataset. *graph_dir* and *save_dir* should be set to the path to save your graph file and results file during the training. For grahene, twisted bilayer graphene and twisted bilayer bismuthene, a single MPNN model is used for each dataset. For MoS<sub>2</sub>, four MPNN models are used. Run 
-```bash
-deeph-train --config ${config_path}
-```
-with `${config_path}` replaced by the path of config file for training.
-
-After completing the training, you can find the trained model in *save_dir*, which can be used to make prediction on new structures by run
-```bash
-deeph-inference --config ${inference_config_path}
-```
-with `${inference_config_path}` replaced by the path of config file for inference.
-Please note that the DFT results in this dataset were calculated using OpenMX.
-This means that if you want to use a model trained on this dataset to calculate properties, you need to use the overlap calculated using OpenMX.
-The orbital information required for overlap calculations can be found in the [paper](https://www.nature.com/articles/s43588-022-00265-6).
-
-## Demo: Train the DeepH model using the ABACUS interface
-Train the DeepH model by random graphene supercells
-and predict the Hamiltonian of carbon nanotube using
-the ABACUS interface. See README.md in
-[this file](https://github.com/deepmodeling/DeepH-pack/files/9526304/demo_abacus.zip)
-for details.
-
-
-
-
-## How to cite
-
-```
-@article{deeph,
-   author = {Li, He and Wang, Zun and Zou, Nianlong and Ye, Meng and Xu, Runzhang and Gong, Xiaoxun and Duan, Wenhui and Xu, Yong},
-   title = {Deep-learning density functional theory Hamiltonian for efficient ab initio electronic-structure calculation},
-   journal = {Nature Computational Science},
-   volume = {2},
-   number = {6},
-   pages = {367-377},
-   ISSN = {2662-8457},
-   DOI = {10.1038/s43588-022-00265-6},
-   url = {https://doi.org/10.1038/s43588-022-00265-6},
-   year = {2022},
-   type = {Journal Article}
-}
-```
-
-### Recent development
-```
-@article{deephe3,
-   author = {Gong, Xiaoxun and Li, He and Zou, Nianlong and Xu, Runzhang and Duan, Wenhui and Xu, Yong},
-   title = {General framework for E(3)-equivariant neural network representation of density functional theory Hamiltonian},
-   journal = {Nature Communications},
-   volume = {14},
-   number = {1},
-   pages = {2848},
-   ISSN = {2041-1723},
-   DOI = {10.1038/s41467-023-38468-8},
-   url = {https://doi.org/10.1038/s41467-023-38468-8},
-   year = {2023},
-   type = {Journal Article}
-}
-
-@article{xdeeph,
-   author = {Li, He and Tang, Zechen and Gong, Xiaoxun and Zou, Nianlong and Duan, Wenhui and Xu, Yong},
-   title = {Deep-learning electronic-structure calculation of magnetic superstructures},
-   journal = {Nature Computational Science},
-   volume = {3},
-   number = {4},
-   pages = {321-327},
-   ISSN = {2662-8457},
-   DOI = {10.1038/s43588-023-00424-3},
-   url = {https://doi.org/10.1038/s43588-023-00424-3},
-   year = {2023},
-   type = {Journal Article}
-}
-```
