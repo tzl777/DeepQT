@@ -15,7 +15,7 @@ The DeepQT framework consists of two synergistic sub-models:
    - After obtaining the Hamiltonians under different bias voltages, they are used to predict quantum transport properties, such as transmission spectra and current-voltage characteristic curves, etc.
 
 ## Technical Advantages
-The combined DeepQTH + DeepQTV system:
+The combined &zwnj;**DeepQT**&zwnj; + &zwnj;**DeepQTV**&zwnj; system:
 - Accurately predicts device Hamiltonians across diverse bias conditions
 - Enables efficient computation of multiple transport properties
 - Seamlessly integrates with quantum transport solvers (e.g., TBtrans)
