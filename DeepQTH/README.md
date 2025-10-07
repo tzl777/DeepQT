@@ -50,7 +50,7 @@
 ### Install siesta
 Install [SIESTA package](https://gitlab.com/siesta-project/siesta) for NEGF-DFT Hamiltonian matrix calculation to construct datasets. DeepQTH requires SIESTA version >= 4.1.5.
 
-# Use-DeepQTH
+# Use DeepQTH
 
 ### Prepare the dataset
 To perform efficient *ab initio* electronic structure calculation by DeepH method 
