@@ -53,16 +53,7 @@ Install [SIESTA package](https://gitlab.com/siesta-project/siesta) for NEGF-DFT 
 # Use DeepQTH
 
 ### Prepare the dataset
-To perform efficient *ab initio* electronic structure calculation by DeepH method 
-for a class of large-scale material systems, one needs to design an appropriate 
-dataset of small structures that have close chemical bonding environment with 
-the target large-scale material systems. Therefore, the first step of a DeepH 
-study is to perform the DFT calculation on the above dataset to get the DFT 
-Hamiltonian matrices with the localized basis. DeepH-pack supports DFT 
-results made by ABACUS, OpenMX, FHI-aims or SIESTA and will support HONPAS soon.
-
-For more information, see the
-[documentation](https://deeph-pack.readthedocs.io/en/latest/dataset/dataset.html).
+DeepQTH is designed to predict the intermediate variable in DFT/NEGF-DFT—the Hamiltonian—and thereby enable efficient first-principles electronic structure prediction for large-scale systems. To achieve this, an appropriate small-scale structural dataset that reflects the bonding environments of the target large-scale system must be constructed, followed by DFT/NEGF-DFT calculations to obtain localized-basis Hamiltonian matrices.
 
 ### Preprocess the dataset
 `Preprocess` is a part of DeepH-pack. Through `Preprocess`, DeepH-pack will
@@ -71,10 +62,6 @@ of text and *HDF5* for each structure in a separate folder, generate local
 coordinates, and perform basis transformation for DFT Hamiltonian matrices.
 We use the following convention of units:
 
-Quantity | Unit 
----|---
-Length   | Å    
-Energy   | eV   
 
 You need to edit a configuration in the format of *ini*, setting up the
 file referring to the default file `DeepH-pack/deeph/preprocess/preprocess_default.ini`.
