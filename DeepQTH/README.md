@@ -1,24 +1,6 @@
-<p align="center">
-  <img height="90" src="logo/logo_word.svg"/>
-</p>
+**DeepQTH**(Deep learning of Quantum Transport Hamiltonian) is one of the submodules of **DeepQT**, designed to predict the intermediate variable in NEGF-DFT—the equilibrium Hamiltonian under zero-bias—and thereby enable the prediction of various electronic structure properties.
 
---------------------------------------------------------------------------------
-[![DOI:10.1038/s43588-022-00265-6](https://zenodo.org/badge/DOI/10.1038/s43588-022-00265-6.svg)](https://doi.org/10.1038/s43588-022-00265-6)
-[![Documentation Status](https://readthedocs.org/projects/deeph-pack/badge/)](https://deeph-pack.readthedocs.io/)
-
-DeepH-pack is the official implementation of the DeepH
-(**Deep** **H**amiltonian) method described in the paper
-[*Deep-learning density functional theory Hamiltonian for efficient ab initio electronic-structure calculation*](https://www.nature.com/articles/s43588-022-00265-6)
-and in the [Research Briefing](https://www.nature.com/articles/s43588-022-00270-9).
-
-DeepH-pack supports DFT results made by
-[ABACUS](https://abacus.ustc.edu.cn/), [OpenMX](http://www.openmx-square.org/), 
-[FHI-aims](https://fhi-aims.org/) or [SIESTA](https://departments.icmab.es/leem/siesta/) and will support
-[HONPAS](http://honpas.ustc.edu.cn/) soon.
-
-For more information, see the
-[documentation](https://deeph-pack.readthedocs.io) and the
-[talk (in Chinese)](https://www.bilibili.com/video/BV1wg41127Mm?share_source=copy_web&vd_source=97d03cee69ef354790abb6105b612e86).
+**DeepQTH** supports both DFT results from [SIESTA](https://siesta-project.org/siesta/CodeAccess/index.html) and NEGF-DFT results from [TranSIESTA](https://siesta-project.org/siesta/CodeAccess/index.html).
 
 # Contents
 1. [How to cite](#how-to-cite)
