@@ -9,6 +9,46 @@
 4. [How to cite](#how-to-cite)
 
 
+# Installation
+
+## System Requirements
+- **Python Version**: 3.9 or higher  
+- **Environment Management**: Conda is recommended  
+
+## Installation Steps
+
+### Method 1: Using Conda Environment (Recommended)
+
+1. **Create and activate the Conda environment**
+
+   ```bash
+   conda env create -f environment.yml
+   conda activate deepqt
+   ```
+
+### Method 2: Manual Installation
+
+1. **Create a Python virtual environment**
+
+   ```bash
+   conda create --name deepqt python=3.9
+   conda activate deepqt
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Clone DeePTB and Navigate to the root directory:
+    ```bash
+    git clone https://github.com/mzjb/DeepH-pack.git
+    cd DeepH-pack
+    pip install .
+   ```
+
+
 ## Installation
 
 To use DeepH-pack, following environments and packages are required：
