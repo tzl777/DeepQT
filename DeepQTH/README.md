@@ -60,24 +60,11 @@ DeepQTH is designed to predict the intermediate variable in DFT/NEGF-DFT—the H
 We use the script `Read_sample_data_and_expand_the_dataset.ipynb` located in the `./0_generate_dataset` directory to generate the dataset. First, an appropriate small-scale structural sample that reflects the bonding environment of the target large-scale system is selected and placed in `./0_generate_dataset/sample_data`. For each sample, molecular dynamics (MD) simulations are performed (with fixed left and right electrodes for device sample, and MD applied only to the scattering region). The last 600 relatively stable MD trajectories are extracted as training samples and saved in `./0_generate_dataset/expand_dataset/raw`. Each training sample is then computed using SIESTA/TranSIESTA for DFT/NEGF-DFT calculations.
 
 ### Preprocess the dataset
-`Preprocess` is a part of DeepH-pack. Through `Preprocess`, DeepH-pack will
-convert the unit of physical quantity, store the data files in the format
-of text and *HDF5* for each structure in a separate folder, generate local
-coordinates, and perform basis transformation for DFT Hamiltonian matrices.
-We use the following convention of units:
+Preprocess is an essential part of DeepQTH. Using the script `preprocess.ipynb` in the `./1_preprocess`, DeepQTH extracts structural parameters, local coordinate systems, and Hamiltonian blocks rotated into the local coordinate frame from each SIESTA/TranSIESTA-calculated sample, saving them in `./0_expand_dataset/processed`. Each sample and its local substructures are then converted into graph-type data and stored in `./0_expand_dataset/graph`, with the preprocessed data for each sample saved in its own subfolder.
 
+In the `preprocess.ipynb` file, users need to define a dictionary-type configuration parameter, `config`, specifying the output path for the preprocessed files, selecting whether the data come from SIESTA or TranSIESTA calculations, and defining the local cutoff (nearsightedness) radius.
 
-You need to edit a configuration in the format of *ini*, setting up the
-file referring to the default file `DeepH-pack/deeph/preprocess/preprocess_default.ini`.
-The meaning of the keywords can be found in the
-[documentation](https://deeph-pack.readthedocs.io/en/latest/keyword/preprocess.html).
-For a quick start, you must set up *raw_dir*, *processed_dir* and *interface*.
-
-With the configuration file prepared, run 
-```bash
-deeph-preprocess --config ${config_path}
-```
-with `${config_path}` replaced by the path of your configuration file.
+By running the `main()` function in `preprocess.ipynb`, the preprocessing procedure is completed, and all preprocessed samples are generalized into a graph-type dataset.
 
 ### Train your model
 `Train` is a part of DeepH-pack, which is used to train a deep learning model using the processed dataset.
