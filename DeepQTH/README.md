@@ -9,7 +9,7 @@
 4. [How to cite](#how-to-cite)
 
 
-## Requirements
+## Installation
 
 To use DeepH-pack, following environments and packages are required：
 
