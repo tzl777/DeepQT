@@ -5,8 +5,7 @@
 # Contents
 1. [Installation](#Installation)
 2. [Use DeepQTH](#Use-DeepQTH)
-3. [Demo](#demo-deeph-study-on-twisted-bilayer-bismuthene)
-4. [How to cite](#how-to-cite)
+3. [How to cite](#how-to-cite)
 
 
 # Installation
@@ -60,86 +59,22 @@ DeepQTH is designed to predict the intermediate variable in DFT/NEGF-DFT—the H
 We use the script `Read_sample_data_and_expand_the_dataset.ipynb` located in the `./0_generate_dataset` directory to generate the dataset. First, an appropriate small-scale structural sample that reflects the bonding environment of the target large-scale system is selected and placed in `./0_generate_dataset/sample_data`. For each sample, molecular dynamics (MD) simulations are performed (with fixed left and right electrodes for device sample, and MD applied only to the scattering region). The last 600 relatively stable MD trajectories are extracted as training samples and saved in `./0_generate_dataset/expand_dataset/raw`. Each training sample is then computed using SIESTA/TranSIESTA for DFT/NEGF-DFT calculations.
 
 ### Preprocess the dataset
-Preprocess is an part of DeepQTH. Using the script `preprocess.ipynb` in the `./1_preprocess`, DeepQTH extracts structural parameters, local coordinate systems, and Hamiltonian blocks rotated into the local coordinate frame from each SIESTA/TranSIESTA-calculated sample, saving them in `./0_expand_dataset/processed`. Each sample and its local substructures are then converted into graph-type data and stored in `./0_expand_dataset/graph`, with the preprocessed data for each sample saved in its own subfolder.
+`Preprocess` is an part of DeepQTH. Using the script `preprocess.ipynb` in the `./1_preprocess`, DeepQTH extracts structural parameters, local coordinate systems, and Hamiltonian blocks rotated into the local coordinate frame from each SIESTA/TranSIESTA-calculated sample, saving them in `./0_expand_dataset/processed`. Each sample and its local substructures are then converted into graph-type data and stored in `./0_expand_dataset/graph`, with the preprocessed data for each sample saved in its own subfolder.
 
 In the `preprocess.ipynb` file, users need to define a dictionary-type configuration parameter, `config`, specifying the output path for the preprocessed files, selecting whether the data come from SIESTA or TranSIESTA calculations, and defining the local cutoff (nearsightedness) radius.
 
 By running the `main()` function in `preprocess.ipynb`, the preprocessing procedure is completed, and all preprocessed samples are generalized into a graph-type dataset.
 
 ### Train your model
-Train is one of the most important parts of DeepQTH, used to train the deep learning model with the prepared dataset. In the `train.ipynb` script, users need to define a dictionary-type configuration parameter, `config`, specifying the path to the preprocessed dataset, the directory for saving the trained model, as well as the training parameters, hyperparameters, and network architecture settings.
+`Train` is one of the most important parts of DeepQTH, used to train the deep learning model with the prepared dataset. In the `train.ipynb` script, users need to define a dictionary-type configuration parameter, `config`, specifying the path to the preprocessed dataset, the directory for saving the trained model, as well as the training parameters, hyperparameters, and network architecture settings.
 
 By executing the `main()` function in `train.ipynb`, the program partitions the dataset into training, validation, and test sets, and loads the neural network model for training. The training outputs and the trained model are saved in the `./2_train/trained_model` directory.
 
-### Inference with your model
-`Inference` is a part of DeepH-pack, which is used to predict the 
-DFT Hamiltonian for large-scale material structures and perform 
-sparse calculation of physical properties.
+### Predict with your model
+`Predict` is another key component of DeepQTH. It preprocesses the target large-scale system, loads the trained model, and predicts the Hamiltonian blocks under equilibrium. The predicted Hamiltonian blocks are then assembled into the real-space Hamiltonian and saved as `.HSX` or `.TSHS` files. In the `predict.ipynb` script, users need to define a configuration parameter, `config`, specifying the path to the target large-scale system, the path to the trained neural network model, and the local nearsightedness radius (which must be consistent for the same material type). 
 
-Firstly, one should prepare the structure file of large-scale material 
-and calculate the overlap matrix. Overlap matrix calculation does not
-require `SCF`. Even if the material system is large, only a small calculation
-time and memory consumption are required. Following are the steps to
-calculate the overlap matrix using different supported DFT packages:
-1. **ABACUS**: Set the following parameters in the input file of ABACUS `INPUT`:
-    ```
-    calculation   get_S
-    ```
-    and run ABACUS like a normal `SCF` calculation.
-    [ABACUS version >= 2.3.2](https://github.com/deepmodeling/abacus-develop/releases/tag/v2.3.2) is required.
-2. **OpenMX**: See this [repository](https://github.com/mzjb/overlap-only-OpenMX#usage).
+By executing the `main()` function in `predict.ipynb`, the program preprocesses the target large-scale system, loads the trained model to predict local Hamiltonian blocks, and transforms and assembles them into the full real-space Hamiltonian. Finally, using the `sisl` package to read the predicted full Hamiltonian, multiple electronic structure properties can be predicted.
 
-For overlap matrix calculation, you need to use the same basis set and DFT
-software when preparing the dataset.
-
-Then, prepare a configuration in the format of *ini*, setting up the 
-file referring to the default `DeepH-pack/deeph/inference/inference_default.ini`. 
-The meaning of the keywords can be found in the
-[INPUT KEYWORDS section](https://deeph-pack.readthedocs.io/en/latest/keyword/inference.html). 
-For a quick start, you must set up *OLP_dir*, *work_dir*, *interface*,
-*trained_model_dir* and *sparse_calc_config*, as well as a `JSON` 
-configuration file located at *sparse_calc_config* for sparse calculation.
-
-With the configuration files prepared, run 
-```bash
-deeph-inference --config ${config_path}
-```
-with `${config_path}` replaced by the path of your configuration file.
-
-# Demo: DeepH study on twisted bilayer bismuthene
-When the directory structure of the code folder is not modified, the scripts in it can be used to generate a dataset of non-twisted structures, train a DeepH model, make predictions on the DFT Hamiltonian matrix of twisted structure, and perform sparse diagonalization to compute the band structure for the example study of bismuthene.
-
-Firstly, generate example input files according to your environment path by running the following command:
-```bash
-cd DeepH-pack
-python gen_example.py ${openmx_path} ${openmx_overlap_path} ${pot_path} ${python_interpreter} ${julia_interpreter}
-```
-with `${openmx_path}`, `${openmx_overlap_path}`, `${pot_path}`, `${python_interpreter}`, and `${julia_interpreter}` replaced by the path of original OpenMX executable program, modified 'overlap only' OpenMX executable program, VPS and PAO directories of OpenMX, Python interpreter, and Julia interpreter, respectively. For example, 
-```bash
-cd DeepH-pack
-python gen_example.py /home/user/openmx/source/openmx /home/user/openmx_overlap/source/openmx /home/user/openmx/DFT_DATA19 python /home/user/julia-1.5.4/bin/julia
-```
-
-Secondly, enter the generated `example/` folder and run `run.sh` in each folder one-by-one from 1 to 5. Please note that `run.sh` should be run in the directory where the `run.sh` file is located.
-```bash
-cd example/1_DFT_calculation
-bash run.sh
-cd ../2_preprocess
-bash run.sh
-cd ../3_train
-bash run.sh
-cd ../4_compute_overlap
-bash run.sh
-cd ../5_inference
-bash run.sh
-```
-The third step, the neural network training process, is recommended to be carried out on the GPU. In addition, in order to get the energy band faster, it is recommended to calculate the eigenvalues ​​of different k points in parallel in the fifth step by *which_k* interface.
-
-After completing the calculation, you can find the band structure data in OpenMX Band format of twisted bilayer bismuthene with 244 atoms per supercell computed by the predicted DFT Hamiltonian in the file below:
-```
-example/work_dir/inference/5_4/openmx.Band
-```
-The plotted band structure will be consistent with the right pannel of figure 6c in our paper.
 
 # How to cite
 
