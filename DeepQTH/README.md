@@ -46,7 +46,6 @@
     git clone https://github.com/tzl777/DeepQT.git
     cd DeepQT
     pip install .
-   ```
 
 ### Install siesta
 Install [SIESTA package](https://gitlab.com/siesta-project/siesta) for NEGF-DFT Hamiltonian matrix calculation to construct datasets. DeepQTH requires SIESTA version >= 4.1.5.
