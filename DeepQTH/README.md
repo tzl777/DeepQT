@@ -48,68 +48,16 @@ pip install pathos
 pip install psutil
 ```
 
-with `${pytorch_config}` replaced by your own configuration. 
+with `${pytorch_config}` replaced by your own configuration.
 You can find how to set it in [the official website of PyTorch](https://pytorch.org/get-started/previous-versions/).
-### Julia
-Prepare the Julia 1.6.6 interpreter. Install the following Julia packages required with Julia's builtin package manager:
-- Arpack.jl
-- HDF5.jl
-- ArgParse.jl
-- JLD.jl
-- JSON.jl
-- IterativeSolvers.jl
-- DelimitedFiles.jl
-- StaticArrays.jl
-- LinearMaps.jl
-- Pardiso.jl
-
-In Linux, you can quickly achieve the requirements by first running
-```bash
-# install julia 1.6.6
-wget https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.6-linux-x86_64.tar.gz
-tar xzvf julia-1.6.6-linux-x86_64.tar.gz
-
-# open the julia REPL
-julia
-```
-Then enter the pkg REPL by pressing `]` from the Julia REPL. In the pkg REPL run
-```julia
-(@v1.6) pkg> add Arpack
-(@v1.6) pkg> add HDF5
-(@v1.6) pkg> add ArgParse
-(@v1.6) pkg> add JLD
-(@v1.6) pkg> add JSON
-(@v1.6) pkg> add IterativeSolvers
-(@v1.6) pkg> add DelimitedFiles
-(@v1.6) pkg> add StaticArrays
-(@v1.6) pkg> add LinearMaps
-```
-Follow [these instructions](https://github.com/JuliaSparse/Pardiso.jl#mkl-pardiso) to install Pardiso.jl.
 
 ### One of the supported DFT packages
-One of the supported DFT packages is required to obtain the dataset and
-calculate the overlap matrix for large-scale material systems.
-DeepH-pack supports DFT results made by ABACUS, OpenMX, FHI-aims
-or SIESTA and will support HONPAS soon.
+One of the supported DFT packages is required to obtain the dataset and  for large-scale material systems.
+DeepH-pack supports DFT results made by SIESTA.
 
-1. **ABACUS**: Install [ABACUS package](https://abacus.ustc.edu.cn)
-    for density functional theory Hamiltonian matrix calculation to
-    construct datasets. DeepH-pack requires
-    [ABACUS version >= 2.3.2](https://github.com/deepmodeling/abacus-develop/releases/tag/v2.3.2).
-2. **OpenMX**:
-    1. Install [OpenMX package version 3.9](http://www.openmx-square.org/download.html) for density functional theory Hamiltonian matrix calculation to construct datasets.
-        If you are using Intel MKL and Intel MPI environments, you can use the following variable definitions for makefile
-        ```
-        CC = mpiicc -O3 -xHOST -ip -no-prec-div -qopenmp -I${MKLROOT}/include/fftw -I${MKLROOT}/include
-        FC = mpiifort -O3 -xHOST -ip -no-prec-div -qopenmp -I${MKLROOT}/include
-        LIB = ${CMPLR_ROOT}/linux/compiler/lib/intel64_lin/libiomp5.a ${MKLROOT}/lib/intel64/libmkl_blas95_lp64.a ${MKLROOT}/lib/intel64/libmkl_lapack95_lp64.a ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_intel_thread.a ${MKLROOT}/lib/intel64/libmkl_core.a ${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a -Wl,--end-group ${CMPLR_ROOT}/linux/compiler/lib/intel64_lin/libifcoremt.a -lpthread -lm -ldl
-        ```
-        Or edit the makefile yourself according to your environment to install OpenMX version 3.9.
-    2. A modified OpenMX package is also used to compute overlap matrices only for large-scale materials structure. Install 'overlap only' OpenMX according to the *readme* documentation in this [repository](https://github.com/mzjb/overlap-only-OpenMX).
-3. **SIESTA**:
-    Install [SIESTA package](https://gitlab.com/siesta-project/siesta) for
-    density functional theory Hamiltonian matrix calculation to construct
-    datasets. DeepH-pack requires SIESTA version >= 4.1.5.
+**SIESTA**:
+Install [SIESTA package](https://gitlab.com/siesta-project/siesta) for NEGF-DFT Hamiltonian matrix calculation to construct datasets. DeepQTH requires SIESTA version >= 4.1.5.
+
 ## Usage
 
 ### Install DeepH-pack
