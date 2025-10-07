@@ -1,63 +1,13 @@
 **DeepQTH**(Deep learning of Quantum Transport Hamiltonian) is one of the submodules of **DeepQT**, designed to predict the intermediate variable in NEGF-DFT—the equilibrium Hamiltonian under zero-bias—and thereby enable the prediction of various electronic structure properties.
 
-**DeepQTH** supports both DFT results from [SIESTA](https://siesta-project.org/siesta/CodeAccess/index.html) and NEGF-DFT results from [TranSIESTA](https://siesta-project.org/siesta/CodeAccess/index.html).
+**DeepQTH** supports both DFT results and NEGF-DFT results from [SIESTA/TranSIESTA](https://siesta-project.org/siesta/CodeAccess/index.html).
 
 # Contents
-1. [How to cite](#how-to-cite)
-1. [Requirements](#requirements)
-1. [Usage](#usage)
-1. [Demo](#demo-deeph-study-on-twisted-bilayer-bismuthene)
-1. [Team](#team)
+1. [Installation](#Installation)
+2. [Usage](#usage)
+3. [Demo](#demo-deeph-study-on-twisted-bilayer-bismuthene)
+4. [How to cite](#how-to-cite)
 
-
-## How to cite
-
-```
-@article{deeph,
-   author = {Li, He and Wang, Zun and Zou, Nianlong and Ye, Meng and Xu, Runzhang and Gong, Xiaoxun and Duan, Wenhui and Xu, Yong},
-   title = {Deep-learning density functional theory Hamiltonian for efficient ab initio electronic-structure calculation},
-   journal = {Nature Computational Science},
-   volume = {2},
-   number = {6},
-   pages = {367-377},
-   ISSN = {2662-8457},
-   DOI = {10.1038/s43588-022-00265-6},
-   url = {https://doi.org/10.1038/s43588-022-00265-6},
-   year = {2022},
-   type = {Journal Article}
-}
-```
-
-### Recent development
-```
-@article{deephe3,
-   author = {Gong, Xiaoxun and Li, He and Zou, Nianlong and Xu, Runzhang and Duan, Wenhui and Xu, Yong},
-   title = {General framework for E(3)-equivariant neural network representation of density functional theory Hamiltonian},
-   journal = {Nature Communications},
-   volume = {14},
-   number = {1},
-   pages = {2848},
-   ISSN = {2041-1723},
-   DOI = {10.1038/s41467-023-38468-8},
-   url = {https://doi.org/10.1038/s41467-023-38468-8},
-   year = {2023},
-   type = {Journal Article}
-}
-
-@article{xdeeph,
-   author = {Li, He and Tang, Zechen and Gong, Xiaoxun and Zou, Nianlong and Duan, Wenhui and Xu, Yong},
-   title = {Deep-learning electronic-structure calculation of magnetic superstructures},
-   journal = {Nature Computational Science},
-   volume = {3},
-   number = {4},
-   pages = {321-327},
-   ISSN = {2662-8457},
-   DOI = {10.1038/s43588-023-00424-3},
-   url = {https://doi.org/10.1038/s43588-023-00424-3},
-   year = {2023},
-   type = {Journal Article}
-}
-```
 
 ## Requirements
 
@@ -331,38 +281,53 @@ the ABACUS interface. See README.md in
 for details.
 
 
-## Team
-#### Main developers
-- **He Li**
 
-   Tsinghua University
 
-   mzjb313 [at] gmail [dot] com
+## How to cite
 
-+ **Zechen Tang**
-   
-    Tsinghua University
+```
+@article{deeph,
+   author = {Li, He and Wang, Zun and Zou, Nianlong and Ye, Meng and Xu, Runzhang and Gong, Xiaoxun and Duan, Wenhui and Xu, Yong},
+   title = {Deep-learning density functional theory Hamiltonian for efficient ab initio electronic-structure calculation},
+   journal = {Nature Computational Science},
+   volume = {2},
+   number = {6},
+   pages = {367-377},
+   ISSN = {2662-8457},
+   DOI = {10.1038/s43588-022-00265-6},
+   url = {https://doi.org/10.1038/s43588-022-00265-6},
+   year = {2022},
+   type = {Journal Article}
+}
+```
 
-#### Collaborators
-+ **Xiaoxun Gong**
+### Recent development
+```
+@article{deephe3,
+   author = {Gong, Xiaoxun and Li, He and Zou, Nianlong and Xu, Runzhang and Duan, Wenhui and Xu, Yong},
+   title = {General framework for E(3)-equivariant neural network representation of density functional theory Hamiltonian},
+   journal = {Nature Communications},
+   volume = {14},
+   number = {1},
+   pages = {2848},
+   ISSN = {2041-1723},
+   DOI = {10.1038/s41467-023-38468-8},
+   url = {https://doi.org/10.1038/s41467-023-38468-8},
+   year = {2023},
+   type = {Journal Article}
+}
 
-- **Honggeng Tao**
-
-+ **Zun Wang**
-
-- **Nianlong Zou**
-
-+ **Ting Bao**
-
-#### Supervisors
-- **Yong Xu**
-
-   Tsinghua University
-
-   yongxu [at] tsinghua [dot] edu [dot] cn
-
-+ **Wenhui Duan**
-
-   Tsinghua University
-
-   duanw [at] tsinghua [dot] edu [dot] cn
+@article{xdeeph,
+   author = {Li, He and Tang, Zechen and Gong, Xiaoxun and Zou, Nianlong and Duan, Wenhui and Xu, Yong},
+   title = {Deep-learning electronic-structure calculation of magnetic superstructures},
+   journal = {Nature Computational Science},
+   volume = {3},
+   number = {4},
+   pages = {321-327},
+   ISSN = {2662-8457},
+   DOI = {10.1038/s43588-023-00424-3},
+   url = {https://doi.org/10.1038/s43588-023-00424-3},
+   year = {2023},
+   type = {Journal Article}
+}
+```
