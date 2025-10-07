@@ -54,8 +54,10 @@ Install [SIESTA package](https://gitlab.com/siesta-project/siesta) for NEGF-DFT 
 
 # Use DeepQTH
 
-### Prepare the dataset
+### Generate the dataset
 DeepQTH is designed to predict the intermediate variable in DFT/NEGF-DFT—the Hamiltonian—and thereby enable efficient first-principles electronic structure prediction for large-scale systems. To achieve this, an appropriate small-scale structural dataset that reflects the bonding environments of the target large-scale system must be constructed, followed by DFT/NEGF-DFT calculations to obtain localized-basis Hamiltonian matrices.
+
+We use the script `Read_sample_data_and_expand_the_dataset.ipynb` located in the `./0_generate_dataset` directory to generate the dataset. First, an appropriate small-scale structural sample that reflects the bonding environment of the target large-scale system is selected and placed in `./0_generate_dataset/sample_data`. For each sample, molecular dynamics (MD) simulations are performed (with fixed left and right electrodes for device sample, and MD applied only to the scattering region). The last 600 relatively stable MD trajectories are extracted as training samples and saved in `./0_generate_dataset/expand_dataset/raw`. Each training sample is then computed using SIESTA/TranSIESTA for DFT/NEGF-DFT calculations.
 
 ### Preprocess the dataset
 `Preprocess` is a part of DeepH-pack. Through `Preprocess`, DeepH-pack will
