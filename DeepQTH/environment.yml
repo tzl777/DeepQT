@@ -1,4 +1,4 @@
-name: deepqt-cpu
+name: deepqt
 channels:
   - conda-forge
   - pytorch
@@ -386,4 +386,4 @@ dependencies:
       - xarray==2024.7.0
       - yacs==0.1.8
       - yarl==1.20.0
-prefix: /fs2/home/ndsim10/miniconda3/envs/deepqt-cpu
+prefix: /fs2/home/ndsim10/miniconda3/envs/deepqt
