@@ -1,5 +1,0 @@
-Loading siesta/4.1.5-icc19-ompi-x
-  Loading requirement: Intel_compiler/19.0.4 MPI/openmpi/4.1.2-mpi-x-icc19.0
-    MKL/19.1.2 fftw/3.3.10-icc19.0 hdf5/1.12.0-icc19.0-openmpi
-    pnetcdf/1.12.2-icc19.0-openmpi netcdf/4.8.0-icc19.0-openmpi
-Job completed
