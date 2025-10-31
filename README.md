@@ -29,4 +29,11 @@ Due to commercial considerations, we are currently releasing the &zwnj;**DeepQTH
 
 The DeepQTV model will remain proprietary during the initial commercialization phase.
 
+To balance academic openness with ongoing commercial collaboration, we are currently releasing the core implementation of the DeepQTH model as open source. This release aims to:
+- Accelerate research and innovation in electronic-structure modeling;
+- Demonstrate the overall functionality and framework of the model;
+- Prevent disclosure of sensitive content during the collaboration phase.
+
+After consultation with our commercial partners, the DeepQTV model will be made open source within the next month.
+
 
