@@ -79,5 +79,11 @@ By executing the `main()` function in `predict.ipynb`, the program preprocesses 
 # Demo: Prediction of defect-free graphene
 
 We provide a defect-free graphene [dataset](https://doi.org/10.5281/zenodo.17490788) for predicting the equilibrium-state Hamiltonian of large-scale graphene systems. Copy the raw folder from the dataset into the `./0_generate_dataset/expand_dataset` directory. 
+
 Then, open the `preprocess.ipynb` script located in the `./1_preprocess` directory, set the corresponding paths and computational parameters, and execute the code. The preprocessed `h5` data and `graph` data will be generated and saved in the `./0_generate_dataset/expand_dataset/processed` and `./0_generate_dataset/expand_dataset/graph` directories, respectively.
+
+After obtaining the graph data from preprocessing, open the `train.ipynb` script located in the `./2_train` directory. Set the appropriate file paths, neural network architecture parameters, and training parameters, then execute the script to begin training. During the training process, a `./2_train/trained_model` directory will be automatically created under `./2_train` to store training logs, loss values, learning rates, and the optimized model learned throughout the training process.
+
+After training is completed, navigate to the `3_predict` directory and place the structure files to be predicted in the `3_predict/predict` folder. Perform a single-point DFT calculation on the target structure to generate the necessary input data for preprocessing. Finally, open the `predict.ipynb` script in the `3_predict` directory, set the path to the trained model and the corresponding computational parameters, and execute the code in the script. This will perform the prediction and compute electronic structure properties such as band structures and density of states.
+
 
