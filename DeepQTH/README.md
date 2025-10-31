@@ -78,4 +78,6 @@ By executing the `main()` function in `predict.ipynb`, the program preprocesses 
 
 # Demo: Prediction of defect-free graphene
 
+We provide a defect-free graphene [dataset](https://doi.org/10.5281/zenodo.17490788) for predicting the equilibrium-state Hamiltonian of large-scale graphene systems. Copy the raw folder from the dataset into the `./0_generate_dataset/expand_dataset` directory. 
+Then, open the `preprocess.ipynb` script located in the `./1_preprocess` directory, set the corresponding paths and computational parameters, and execute the code. The preprocessed `h5` data and `graph` data will be generated and saved in the `./0_generate_dataset/expand_dataset/processed` and `./0_generate_dataset/expand_dataset/graph` directories, respectively.
 
