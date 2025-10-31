@@ -5,7 +5,7 @@
 # Contents
 1. [Installation](#Installation)
 2. [Use DeepQTH](#Use-DeepQTH)
-3. [How to cite](#how-to-cite)
+3. [Demo](#Demo)
 
 
 # Installation
@@ -76,5 +76,6 @@ By executing the `main()` function in `train.ipynb`, the program partitions the 
 By executing the `main()` function in `predict.ipynb`, the program preprocesses the target large-scale system, loads the trained model to predict local Hamiltonian blocks, and transforms and assembles them into the full real-space Hamiltonian. Finally, using the `sisl` package to read the predicted full Hamiltonian, multiple electronic structure properties can be predicted.
 
 
-# How to cite
+# Demo: Prediction of defect-free graphene
+
 
