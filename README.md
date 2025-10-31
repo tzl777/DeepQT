@@ -22,13 +22,6 @@ The combined &zwnj;**DeepQT**&zwnj; + &zwnj;**DeepQTV**&zwnj; system:
 - Reduces computational overhead by orders of magnitude
 
 ## Open Source Policy
-Due to commercial considerations, we are currently releasing the &zwnj;**DeepQTH**&zwnj; code as open source. This initiative aims to:
-- Accelerate research in quantum transport simulations
-- Facilitate community-driven improvements
-- Demonstrate the framework's capabilities
-
-The DeepQTV model will remain proprietary during the initial commercialization phase.
-
 To balance academic openness with ongoing commercial collaboration, we are currently releasing the core implementation of the DeepQTH model as open source. This release aims to:
 - Accelerate research and innovation in electronic-structure modeling;
 - Demonstrate the overall functionality and framework of the model;
