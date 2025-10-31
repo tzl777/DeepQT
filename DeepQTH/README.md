@@ -5,7 +5,7 @@
 # Contents
 1. [Installation](#Installation)
 2. [Use DeepQTH](#Use-DeepQTH)
-3. [Demo](#Demo)
+3. [Demo](#Demo-Prediction-of-defect-free-graphene)
 
 
 # Installation
